@@ -5,16 +5,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
 
-/**
- * Salva um objeto CentralDeInformacoes em um arquivo XML.
- *
- * @param central     O objeto a ser salvo
- * @param nomeArquivo Nome do arquivo XML
- */
 public class Persistencia {
 
+    /**
+     * Salva um objeto CentralDeInformacoes em um arquivo XML.
+     *
+     * @param central     O objeto a ser salvo
+     * @param nomeArquivo Nome do arquivo XML
+     */
     public static void salvarCentral(CentralDeInformacoes central, String nomeArquivo) {
         XStream xstream = new XStream();
+
+        // Configura segurança e permite explicitamente as classes que vão aparecer no XML
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(new Class[] {
+                CentralDeInformacoes.class,
+                Passageiro.class,
+                Sexo.class,
+                Corrida.class
+        });
+
         String xml = xstream.toXML(central);
         try (FileWriter writer = new FileWriter(nomeArquivo)) {
             writer.write(xml);
@@ -27,11 +37,20 @@ public class Persistencia {
      * Recupera um objeto CentralDeInformacoes de um arquivo XML.
      *
      * @param nomeArquivo Nome do arquivo XML
-     * @return Objeto CentralDeInformacoes recuperado ou novo se o arquivo não
-     *         existir
+     * @return Objeto CentralDeInformacoes recuperado ou novo se o arquivo não existir
      */
     public static CentralDeInformacoes carregarCentral(String nomeArquivo) {
         XStream xstream = new XStream();
+
+        // Configura segurança e permite explicitamente as classes que vão aparecer no XML
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(new Class[] {
+                CentralDeInformacoes.class,
+                Passageiro.class,
+                Sexo.class,
+                Corrida.class
+        });
+
         try {
             return (CentralDeInformacoes) xstream.fromXML(new FileReader(nomeArquivo));
         } catch (IOException e) {
@@ -39,5 +58,4 @@ public class Persistencia {
             return new CentralDeInformacoes();
         }
     }
-
 }

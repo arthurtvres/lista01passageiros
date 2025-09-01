@@ -1,0 +1,10 @@
+<com.example.lista01.CentralDeInformacoes>
+  <todosOsPassageiros>
+    <com.example.lista01.Passageiro>
+      <nome>Arthur</nome>
+      <sexo>MASCULINO</sexo>
+      <dataNascimento>2005-12-15 02:00:00.0 UTC</dataNascimento>
+      <email>arthurtavares@gmail.com</email>
+    </com.example.lista01.Passageiro>
+  </todosOsPassageiros>
+</com.example.lista01.CentralDeInformacoes>

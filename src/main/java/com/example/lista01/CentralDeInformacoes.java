@@ -8,13 +8,11 @@ public class CentralDeInformacoes {
     private ArrayList<Passageiro> todosOsPassageiros;
     private ArrayList<Corrida> todasAsCorridas;
 
-    // Construtor padrão: inicializa listas
     public CentralDeInformacoes() {
         todosOsPassageiros = new ArrayList<>();
         todasAsCorridas = new ArrayList<>();
     }
 
-    // Método para garantir que listas não sejam nulas (para quando carregar do XML)
     public void inicializarListas() {
         if (todosOsPassageiros == null) todosOsPassageiros = new ArrayList<>();
         if (todasAsCorridas == null) todasAsCorridas = new ArrayList<>();
@@ -58,7 +56,7 @@ public class CentralDeInformacoes {
 
         int idade = hoje.get(Calendar.YEAR) - nascimento.get(Calendar.YEAR);
         if (hoje.get(Calendar.DAY_OF_YEAR) < nascimento.get(Calendar.DAY_OF_YEAR)) {
-            idade--; // ainda não fez aniversário este ano
+            idade--; //corrigir idade.
         }
         return idade;
     }
@@ -84,7 +82,7 @@ public class CentralDeInformacoes {
 
     public ArrayList<Corrida> recuperarCorridasDeUmPassageiro(String emailPassageiro) {
         Passageiro passageiro = recuperarPassageiroEmail(emailPassageiro);
-        if (passageiro == null) return null; // Passageiro não existe
+        if (passageiro == null) return null;
 
         ArrayList<Corrida> lista = new ArrayList<>();
         for (Corrida c : todasAsCorridas) {
@@ -92,7 +90,7 @@ public class CentralDeInformacoes {
                 lista.add(c);
             }
         }
-        return lista; // pode ser lista vazia
+        return lista;
     }
 
     public ArrayList<Corrida> getTodasAsCorridas() {

@@ -97,7 +97,7 @@ public class Main {
                         if (central.adicionarCorrida(corrida)) {
                             System.out.println("Corrida cadastrada com sucesso! ID: " + corrida.getId());
                         } else {
-                            System.out.println("Erro: corrida com ID duplicado.");
+                            System.out.println("Erro, corrida com ID duplicado.");
                         }
                     } else {
                         System.out.println("Passageiro não encontrado.");

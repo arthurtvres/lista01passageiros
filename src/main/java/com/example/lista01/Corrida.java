@@ -22,18 +22,21 @@ public class Corrida {
     public void setId(long id) {
         this.id = id;
     }
+
     public String getEnderecoPartida() {
         return enderecoPartida;
     }
     public void setEnderecoPartida(String enderecoPartida) {
         this.enderecoPartida = enderecoPartida;
     }
+
     public String getEnderecoDestino() {
         return enderecoDestino;
     }
     public void setEnderecoDestino(String enderecoDestino) {
         this.enderecoDestino = enderecoDestino;
     }
+
     public Passageiro getPassageiro() {
         return passageiro;
     }
@@ -43,8 +46,7 @@ public class Corrida {
 
     @Override
     public String toString() {
-        String pronome = (passageiro.getSexo() == Sexo.FEMININO) ? "a" : "o";
-        return passageiro.getNome().split(" ")[0] + " pede para pegá" + pronome + " em " + enderecoPartida;
+        return "Corrida: Passageiro " + passageiro.getNome() +  " "+ " | Partida: " + enderecoPartida + " | Destino: " + enderecoDestino;
     }
 }
 

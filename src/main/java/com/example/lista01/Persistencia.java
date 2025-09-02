@@ -52,7 +52,9 @@ public class Persistencia {
         });
 
         try {
-            return (CentralDeInformacoes) xstream.fromXML(new FileReader(nomeArquivo));
+            CentralDeInformacoes central = (CentralDeInformacoes) xstream.fromXML(new FileReader(nomeArquivo));
+            central.inicializarListas(); // Garante que listas não fiquem nulas
+            return central;
         } catch (IOException e) {
             e.printStackTrace();
             return new CentralDeInformacoes();

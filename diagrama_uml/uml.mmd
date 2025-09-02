@@ -1,0 +1,42 @@
+classDiagram
+    class CentralDeInformacoes {
+        -ArrayList~Passageiro~ todosOsPassageiros
+        -ArrayList~Corrida~ todasAsCorridas
+        +CentralDeInformacoes()
+        +inicializarListas()
+        +adicionarPassageiro(Passageiro): boolean
+        +recuperarPassageiroEmail(String): Passageiro
+        +adicionarCorrida(Corrida): boolean
+        +recuperarCorridaPeloId(long): Corrida
+        +recuperarCorridasDeUmPassageiro(String): ArrayList~Corrida~
+    }
+
+    class Passageiro {
+        -String nome
+        -Sexo sexo
+        -Date dataNascimento
+        -String email
+        +Passageiro(String, Sexo, Date, String)
+    }
+
+    class Corrida {
+        -long id
+        -String enderecoPartida
+        -String enderecoDestino
+        -Passageiro passageiro
+        +Corrida()
+        +Corrida(String, String, Passageiro)
+        +toString(): String
+    }
+
+
+    class Sexo {
+        <<enumeration>>
+        MASCULINO
+        FEMININO
+    }
+
+    CentralDeInformacoes "1" --> "*" Passageiro
+    CentralDeInformacoes "1" --> "*" Corrida
+    Corrida "1" --> "1" Passageiro
+    Passageiro "1" --> "1" Sexo
